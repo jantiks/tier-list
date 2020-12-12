@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		984C35552585252B00E1DB99 /* ImageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 984C35542585252B00E1DB99 /* ImageCell.swift */; };
 		987AE5E22584D48D007809A3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987AE5E12584D48D007809A3 /* AppDelegate.swift */; };
 		987AE5E42584D48D007809A3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987AE5E32584D48D007809A3 /* SceneDelegate.swift */; };
 		987AE5E62584D48D007809A3 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987AE5E52584D48D007809A3 /* ViewController.swift */; };
@@ -18,6 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		984C35542585252B00E1DB99 /* ImageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageCell.swift; sourceTree = "<group>"; };
 		987AE5DE2584D48D007809A3 /* tier list.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "tier list.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		987AE5E12584D48D007809A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		987AE5E32584D48D007809A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -63,6 +65,7 @@
 				987AE5E52584D48D007809A3 /* ViewController.swift */,
 				987AE60525850539007809A3 /* ClassicModeController.swift */,
 				987AE6072585060B007809A3 /* ClassicModeRow.swift */,
+				984C35542585252B00E1DB99 /* ImageCell.swift */,
 				987AE5E12584D48D007809A3 /* AppDelegate.swift */,
 				987AE5E32584D48D007809A3 /* SceneDelegate.swift */,
 				987AE5E72584D48D007809A3 /* Main.storyboard */,
@@ -149,6 +152,7 @@
 				987AE5E22584D48D007809A3 /* AppDelegate.swift in Sources */,
 				987AE6082585060B007809A3 /* ClassicModeRow.swift in Sources */,
 				987AE5E42584D48D007809A3 /* SceneDelegate.swift in Sources */,
+				984C35552585252B00E1DB99 /* ImageCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
