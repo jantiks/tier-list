@@ -89,6 +89,51 @@
             </objects>
             <point key="canvasLocation" x="1047.8260869565217" y="112.5"/>
         </scene>
+        <!--Classic Mode Controller-->
+        <scene sceneID="hR6-r0-ma5">
+            <objects>
+                <tableViewController storyboardIdentifier="Classic" id="Lbf-RJ-Jio" customClass="ClassicModeController" customModule="tier_list" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1Dz-mA-yvD">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <prototypes>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="row" id="B7C-Ua-h0P" customClass="ClassicModeRow" customModule="tier_list" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="414" height="43.5"/>
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="B7C-Ua-h0P" id="EzT-2V-ayL">
+                                    <rect key="frame" x="0.0" y="0.0" width="414" height="43.5"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZK8-64-TCf">
+                                            <rect key="frame" x="0.0" y="0.0" width="46" height="43.5"/>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="headerTapped:" destination="B7C-Ua-h0P" eventType="touchUpInside" id="lrN-NH-mQs"/>
+                                            </connections>
+                                        </button>
+                                    </subviews>
+                                </tableViewCellContentView>
+                                <constraints>
+                                    <constraint firstItem="ZK8-64-TCf" firstAttribute="top" secondItem="B7C-Ua-h0P" secondAttribute="top" id="2Bk-3a-6Jf"/>
+                                    <constraint firstAttribute="bottom" secondItem="ZK8-64-TCf" secondAttribute="bottom" id="2q5-bp-C4n"/>
+                                    <constraint firstItem="ZK8-64-TCf" firstAttribute="leading" secondItem="B7C-Ua-h0P" secondAttribute="leading" id="ekk-Tb-nlv"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="headerButton" destination="ZK8-64-TCf" id="DoC-qk-FzZ"/>
+                                </connections>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="Lbf-RJ-Jio" id="2h9-Ic-vxX"/>
+                            <outlet property="delegate" destination="Lbf-RJ-Jio" id="F2E-ld-OwN"/>
+                        </connections>
+                    </tableView>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="1mu-ek-VqR" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1962" y="113"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="H1T-nI-Wxe">
             <objects>

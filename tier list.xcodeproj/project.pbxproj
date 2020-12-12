@@ -13,6 +13,8 @@
 		987AE5E92584D48D007809A3 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 987AE5E72584D48D007809A3 /* Main.storyboard */; };
 		987AE5EB2584D491007809A3 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 987AE5EA2584D491007809A3 /* Assets.xcassets */; };
 		987AE5EE2584D491007809A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 987AE5EC2584D491007809A3 /* LaunchScreen.storyboard */; };
+		987AE60625850539007809A3 /* ClassicModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987AE60525850539007809A3 /* ClassicModeController.swift */; };
+		987AE6082585060B007809A3 /* ClassicModeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987AE6072585060B007809A3 /* ClassicModeRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		987AE5EA2584D491007809A3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		987AE5ED2584D491007809A3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		987AE5EF2584D491007809A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		987AE60525850539007809A3 /* ClassicModeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicModeController.swift; sourceTree = "<group>"; };
+		987AE6072585060B007809A3 /* ClassicModeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicModeRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,9 +60,11 @@
 		987AE5E02584D48D007809A3 /* tier list */ = {
 			isa = PBXGroup;
 			children = (
+				987AE5E52584D48D007809A3 /* ViewController.swift */,
+				987AE60525850539007809A3 /* ClassicModeController.swift */,
+				987AE6072585060B007809A3 /* ClassicModeRow.swift */,
 				987AE5E12584D48D007809A3 /* AppDelegate.swift */,
 				987AE5E32584D48D007809A3 /* SceneDelegate.swift */,
-				987AE5E52584D48D007809A3 /* ViewController.swift */,
 				987AE5E72584D48D007809A3 /* Main.storyboard */,
 				987AE5EA2584D491007809A3 /* Assets.xcassets */,
 				987AE5EC2584D491007809A3 /* LaunchScreen.storyboard */,
@@ -139,7 +145,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				987AE5E62584D48D007809A3 /* ViewController.swift in Sources */,
+				987AE60625850539007809A3 /* ClassicModeController.swift in Sources */,
 				987AE5E22584D48D007809A3 /* AppDelegate.swift in Sources */,
+				987AE6082585060B007809A3 /* ClassicModeRow.swift in Sources */,
 				987AE5E42584D48D007809A3 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

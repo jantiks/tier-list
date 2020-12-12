@@ -36,6 +36,17 @@ class ViewController: UIViewController {
     }
     
     @IBAction func createTapped(_ sender: UIButton) {
+        let ac = UIAlertController(title: "Tier list mode", message: "Choose tier list mode", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Classic mode", style: .default){
+            [weak self] _ in
+            if let vc = self?.storyboard?.instantiateViewController(identifier: "Classic") {
+                self?.navigationController?.pushViewController(vc, animated: true)
+            }
+            
+            
+        })
+        ac.addAction(UIAlertAction(title: "Drag and Drop mode", style: .default, handler: nil))
+        present(ac, animated: true)
         
     }
     
