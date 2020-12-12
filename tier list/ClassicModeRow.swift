@@ -11,6 +11,7 @@ import UIKit
 class ClassicModeRow: UITableViewCell {
     @IBOutlet var headerButton: UIButton!
     @IBOutlet var collectionView: UICollectionView!
+    var height: CGFloat?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -29,24 +30,26 @@ class ClassicModeRow: UITableViewCell {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-        setLayout()
+//        setLayout(height: height)
     }
     
-    func setLayout() {
-        let layout = UICollectionViewFlowLayout()
-        layout.itemSize = CGSize(width: 100, height: 100)
-    }
-    
+//    func setLayout(height: CGFloat) {
+//        let layout = UICollectionViewFlowLayout()
+//        layout.itemSize = CGSize(width: 400, height: 400)
+//    }
+//
 }
 
 extension ClassicModeRow: UICollectionViewDelegate, UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 2
+        return 1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ImageCell else { fatalError() }
-        
+        cell.backgroundColor  = .systemBlue
+        cell.frame.size.height = height!
+        cell.frame.size.width = height!
         return cell
     }
     
