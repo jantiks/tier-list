@@ -57,6 +57,9 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         cell.headerButton.setTitle(rowName[indexPath.row], for: .normal)
         cell.headerButton.setTitleColor(.black, for: .normal)
         cell.headerButton.backgroundColor = rowNameBg[indexPath.row]
+        cell.headerButton.tag = indexPath.row
+
+        
         cell.height = rowHeight!
         cell.width = rowWidth
         //clousre which calls uiImagePickerController from tableView
@@ -67,11 +70,15 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
             self?.present(picker, animated: true)
             
         }
-        cell.components = components
-        cell.configure()
+        if cell.rowTag == indexPath.row {
+            cell.components = components
+            cell.configure()
+        }
+        
     
         return cell
     }
+    
     
 
     
