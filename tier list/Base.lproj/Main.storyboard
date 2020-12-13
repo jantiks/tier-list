@@ -108,6 +108,9 @@
                                     <subviews>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZK8-64-TCf">
                                             <rect key="frame" x="0.0" y="0.0" width="46" height="145"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="2M4-Bn-OdF"/>
+                                            </constraints>
                                             <state key="normal" title="Button"/>
                                             <connections>
                                                 <action selector="headerTapped:" destination="B7C-Ua-h0P" eventType="touchUpInside" id="lrN-NH-mQs"/>
@@ -136,9 +139,9 @@
                                         </collectionView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="KiQ-jY-3H6" firstAttribute="leading" secondItem="ZK8-64-TCf" secondAttribute="trailing" id="0en-hw-tlK"/>
                                         <constraint firstAttribute="trailing" secondItem="KiQ-jY-3H6" secondAttribute="trailing" id="7hk-kd-QlE"/>
                                         <constraint firstItem="KiQ-jY-3H6" firstAttribute="top" secondItem="EzT-2V-ayL" secondAttribute="top" id="IbB-mp-v6c"/>
-                                        <constraint firstItem="KiQ-jY-3H6" firstAttribute="leading" secondItem="ZK8-64-TCf" secondAttribute="trailing" id="Mgr-LF-Ndx"/>
                                         <constraint firstAttribute="bottom" secondItem="KiQ-jY-3H6" secondAttribute="bottom" id="V3v-12-nKh"/>
                                     </constraints>
                                 </tableViewCellContentView>

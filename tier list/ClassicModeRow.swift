@@ -15,7 +15,6 @@ class ClassicModeRow: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -24,20 +23,15 @@ class ClassicModeRow: UITableViewCell {
         // Configure the view for the selected state
     }
     @IBAction func headerTapped(_ sender: UIButton) {
+        
     }
     
     func configure() {
         collectionView.delegate = self
         collectionView.dataSource = self
         
-//        setLayout(height: height)
     }
     
-//    func setLayout(height: CGFloat) {
-//        let layout = UICollectionViewFlowLayout()
-//        layout.itemSize = CGSize(width: 400, height: 400)
-//    }
-//
 }
 
 extension ClassicModeRow: UICollectionViewDelegate, UICollectionViewDataSource {
