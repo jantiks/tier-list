@@ -16,6 +16,7 @@
 		987AE5EE2584D491007809A3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 987AE5EC2584D491007809A3 /* LaunchScreen.storyboard */; };
 		987AE60625850539007809A3 /* ClassicModeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987AE60525850539007809A3 /* ClassicModeController.swift */; };
 		987AE6082585060B007809A3 /* ClassicModeRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 987AE6072585060B007809A3 /* ClassicModeRow.swift */; };
+		98F7B0C925861E1F00C5C2B5 /* tierComponent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 98F7B0C825861E1F00C5C2B5 /* tierComponent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +31,7 @@
 		987AE5EF2584D491007809A3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		987AE60525850539007809A3 /* ClassicModeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicModeController.swift; sourceTree = "<group>"; };
 		987AE6072585060B007809A3 /* ClassicModeRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassicModeRow.swift; sourceTree = "<group>"; };
+		98F7B0C825861E1F00C5C2B5 /* tierComponent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = tierComponent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,6 +68,7 @@
 				987AE60525850539007809A3 /* ClassicModeController.swift */,
 				987AE6072585060B007809A3 /* ClassicModeRow.swift */,
 				984C35542585252B00E1DB99 /* ImageCell.swift */,
+				98F7B0C825861E1F00C5C2B5 /* tierComponent.swift */,
 				987AE5E12584D48D007809A3 /* AppDelegate.swift */,
 				987AE5E32584D48D007809A3 /* SceneDelegate.swift */,
 				987AE5E72584D48D007809A3 /* Main.storyboard */,
@@ -147,6 +150,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				98F7B0C925861E1F00C5C2B5 /* tierComponent.swift in Sources */,
 				987AE5E62584D48D007809A3 /* ViewController.swift in Sources */,
 				987AE60625850539007809A3 /* ClassicModeController.swift in Sources */,
 				987AE5E22584D48D007809A3 /* AppDelegate.swift in Sources */,

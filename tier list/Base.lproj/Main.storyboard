@@ -113,13 +113,13 @@
                                             </constraints>
                                             <state key="normal" title="Button"/>
                                             <connections>
-                                                <action selector="headerTapped:" destination="B7C-Ua-h0P" eventType="touchUpInside" id="lrN-NH-mQs"/>
+                                                <action selector="buttonTapped:" destination="B7C-Ua-h0P" eventType="touchUpInside" id="NT2-QU-sbf"/>
                                             </connections>
                                         </button>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KiQ-jY-3H6">
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KiQ-jY-3H6">
                                             <rect key="frame" x="46" y="0.0" width="368" height="145"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                            <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="vLM-az-qLH">
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="izl-Zi-Jzn">
                                                 <size key="itemSize" width="128" height="128"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
@@ -127,13 +127,26 @@
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="tMT-be-ROl" customClass="ImageCell" customModule="tier_list" customModuleProvider="target">
-                                                    <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                    <rect key="frame" x="0.0" y="8.5" width="128" height="128"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="KOK-rS-Ohl" customClass="ImageCell" customModule="tier_list" customModuleProvider="target">
+                                                    <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3Dc-zm-My0">
                                                         <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
                                                         <autoresizingMask key="autoresizingMask"/>
+                                                        <subviews>
+                                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="4j6-vY-4mi">
+                                                                <rect key="frame" x="0.0" y="0.0" width="128" height="128"/>
+                                                            </imageView>
+                                                        </subviews>
+                                                        <constraints>
+                                                            <constraint firstAttribute="bottom" secondItem="4j6-vY-4mi" secondAttribute="bottom" id="1zG-Hp-mEm"/>
+                                                            <constraint firstAttribute="trailing" secondItem="4j6-vY-4mi" secondAttribute="trailing" id="8hw-KQ-cKW"/>
+                                                            <constraint firstItem="4j6-vY-4mi" firstAttribute="top" secondItem="3Dc-zm-My0" secondAttribute="top" id="B9N-DP-ApC"/>
+                                                            <constraint firstItem="4j6-vY-4mi" firstAttribute="leading" secondItem="3Dc-zm-My0" secondAttribute="leading" id="sfi-rv-69M"/>
+                                                        </constraints>
                                                     </collectionViewCellContentView>
-                                                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <connections>
+                                                        <outlet property="imageView" destination="4j6-vY-4mi" id="6js-aU-Ml7"/>
+                                                    </connections>
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
@@ -151,7 +164,7 @@
                                     <constraint firstItem="ZK8-64-TCf" firstAttribute="leading" secondItem="B7C-Ua-h0P" secondAttribute="leading" id="ekk-Tb-nlv"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="collectionView" destination="KiQ-jY-3H6" id="1oe-G8-feO"/>
+                                    <outlet property="collectionView" destination="KiQ-jY-3H6" id="PM4-xV-j4Z"/>
                                     <outlet property="headerButton" destination="ZK8-64-TCf" id="DoC-qk-FzZ"/>
                                 </connections>
                             </tableViewCell>
