@@ -29,8 +29,9 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
+        rowTag = headerButton.tag
         self.buttonTouchedClosure?()
-        rowTag = sender.tag
+        
         
     }
     
@@ -56,7 +57,6 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ImageCell else { fatalError("coudl not load collview cell") }
         
         if rowTag == headerButton.tag {
-            print(components)
             let image = components[rowTag!]?[indexPath.item]
             let path = getDocumentsDirectory().appendingPathComponent(image!.image)
             cell.imageView.image = UIImage(contentsOfFile: path.path)

@@ -10,7 +10,9 @@ import UIKit
 
 class ClassicModeController: UITableViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    var components = [tierComponent]()
+    var rowComponents = [tierComponent]()
+    var components = [Int:[tierComponent]]()
+
     var rowHeight: CGFloat? = 0.0
     let rowName = ["S", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
     let rowNameBg = [
@@ -24,8 +26,7 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         UIColor(red: 0.5, green: 0.9, blue: 1, alpha: 1),
         UIColor(red: 0.5, green: 0.7, blue: 1, alpha: 1),
         UIColor(red: 0.5, green: 0.4, blue: 1, alpha: 1),
-        UIColor(red: 0.5, green: 0, blue: 1, alpha: 1)]
-    let rowNameColor = [""]
+        UIColor(red: 0.5, green: 0, blue: 1, alpha: 1) ]
     var rowCount = 6
     
     override func viewDidLoad() {
@@ -62,20 +63,24 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         
         cell.height = rowHeight!
         cell.width = rowWidth
+        
         //clousre which calls uiImagePickerController from tableView
         cell.buttonTouchedClosure = {
             [weak self] in
             let picker = UIImagePickerController()
             picker.delegate = self
             self?.present(picker, animated: true)
-            
         }
-        if cell.rowTag == indexPath.row {
-            if cell.components.keys.contains(cell.rowTag!) {
-                cell.components[cell.rowTag!]?.append(components.last!)
+        
+        if let tag = cell.rowTag {
+            print(cell.rowTag)
+            print(components)
+            if components.keys.contains(tag) {
+                components[tag]?.append(rowComponents.last!)
             } else {
-                cell.components[cell.rowTag!] = [components.last!]
+                components[tag] = [rowComponents.last!]
             }
+            print(components)
             cell.configure()
         }
         
@@ -96,7 +101,7 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         if let jpegData = image.jpegData(compressionQuality: 0.8) {
             try? jpegData.write(to: imagePath)
             let component = tierComponent(image: imageName)
-            components.append(component)
+            rowComponents.append(component)
             tableView.reloadData()
 
         }
