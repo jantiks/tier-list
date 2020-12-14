@@ -71,7 +71,11 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
             
         }
         if cell.rowTag == indexPath.row {
-            cell.components = components
+            if cell.components.keys.contains(cell.rowTag!) {
+                cell.components[cell.rowTag!]?.append(components.last!)
+            } else {
+                cell.components[cell.rowTag!] = [components.last!]
+            }
             cell.configure()
         }
         
@@ -84,7 +88,6 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
     
 //    picking image from galery
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        print("passed")
         guard let image = info[.originalImage] as? UIImage else { return }
 
         let imageName = UUID().uuidString
@@ -94,7 +97,6 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
             try? jpegData.write(to: imagePath)
             let component = tierComponent(image: imageName)
             components.append(component)
-            print("this is \(components)")
             tableView.reloadData()
 
         }
