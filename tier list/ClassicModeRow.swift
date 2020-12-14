@@ -8,18 +8,18 @@
 
 import UIKit
 
-class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource {
+class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     @IBOutlet var headerButton: UIButton!
-    @IBOutlet var collectionView: UICollectionView!
     var rowTag: Int?
     var height: CGFloat?
     var width: CGFloat?
     var components = [tierComponent]()
-    
+    @IBOutlet var collectionView: UICollectionView!
     var buttonTouchedClosure : (()->Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        // code here
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -61,7 +61,6 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
             let path = getDocumentsDirectory().appendingPathComponent(image.image)
             cell.imageView.image = UIImage(contentsOfFile: path.path)
             print(components)
-            cell.backgroundColor  = .systemBlue
             cell.frame.size.height = height!
             cell.frame.size.width = (width! - 46.0) / 4
         
@@ -69,6 +68,9 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
         
         
         return cell
+    }
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        return CGSize(width: CGFloat(CGFloat(collectionView.frame.width) / CGFloat(components.count)), height: height! - 20)
     }
     
     

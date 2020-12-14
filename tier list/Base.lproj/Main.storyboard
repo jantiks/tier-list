@@ -164,7 +164,7 @@
                                     <constraint firstItem="ZK8-64-TCf" firstAttribute="leading" secondItem="B7C-Ua-h0P" secondAttribute="leading" id="ekk-Tb-nlv"/>
                                 </constraints>
                                 <connections>
-                                    <outlet property="collectionView" destination="KiQ-jY-3H6" id="PM4-xV-j4Z"/>
+                                    <outlet property="collectionView" destination="KiQ-jY-3H6" id="qSp-Wd-Bet"/>
                                     <outlet property="headerButton" destination="ZK8-64-TCf" id="DoC-qk-FzZ"/>
                                 </connections>
                             </tableViewCell>
