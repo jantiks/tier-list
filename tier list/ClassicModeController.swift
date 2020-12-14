@@ -72,18 +72,21 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
             self?.present(picker, animated: true)
         }
         
-        if let tag = cell.rowTag {
-            print(cell.rowTag)
-            print(components)
-            if components.keys.contains(tag) {
-                components[tag]?.append(rowComponents.last!)
-            } else {
-                components[tag] = [rowComponents.last!]
+        if cell.rowTag == indexPath.row {
+            if let tag = cell.rowTag {
+                
+                if components.keys.contains(tag) {
+                    components[tag]?.append(rowComponents.last!)
+                } else {
+                    components[tag] = [rowComponents.last!]
+                }
+                cell.components.append((components[tag]?.last)!)
+                cell.configure()
+                cell.rowTag = nil
+
             }
-            print(components)
-            cell.configure()
+            
         }
-        
     
         return cell
     }
