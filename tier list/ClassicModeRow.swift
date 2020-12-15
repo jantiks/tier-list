@@ -9,23 +9,28 @@
 import UIKit
 
 class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
+    
     @IBOutlet var headerButton: UIButton!
+    @IBOutlet var collectionView: UICollectionView!
+    @IBOutlet var collectionViewWidth: NSLayoutConstraint!
+    
     var rowTag: Int?
     var height: CGFloat?
     var width: CGFloat?
     var components = [tierComponent]()
-    @IBOutlet var collectionView: UICollectionView!
     var buttonTouchedClosure : (()->Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // code here
+        headerButton.frame.size.width = self.frame.size.width / 8
+        collectionViewWidth.constant = (self.frame.size.width * (7/8))
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
+        
 
-        // Configure the view for the selected state
     }
     
     @IBAction func buttonTapped(_ sender: UIButton) {
@@ -60,17 +65,23 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
             let image = components[indexPath.item]
             let path = getDocumentsDirectory().appendingPathComponent(image.image)
             cell.imageView.image = UIImage(contentsOfFile: path.path)
-            print(components)
-            cell.frame.size.height = height!
-            cell.frame.size.width = (width! - 46.0) / 4
         
         
         
         
         return cell
     }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
+    
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        return CGSize(width: CGFloat(CGFloat(collectionView.frame.width) / CGFloat(components.count)), height: height! - 20)
+        if components.count < 5 {
+            return CGSize(width: CGFloat((collectionViewWidth.constant / 4) - 10), height: height! - 20)
+        }
+        
+        return CGSize(width: CGFloat(CGFloat(collectionViewWidth.constant) / CGFloat(components.count) - 10  ), height: height! - 20)
     }
     
     

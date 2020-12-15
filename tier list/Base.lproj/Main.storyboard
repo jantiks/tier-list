@@ -109,7 +109,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZK8-64-TCf">
                                             <rect key="frame" x="0.0" y="0.0" width="46" height="145"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="44" id="2M4-Bn-OdF"/>
+                                                <constraint firstAttribute="width" constant="46" id="dU1-OU-bQv"/>
                                             </constraints>
                                             <state key="normal" title="Button"/>
                                             <connections>
@@ -119,6 +119,9 @@
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KiQ-jY-3H6">
                                             <rect key="frame" x="46" y="0.0" width="368" height="145"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="368" id="yL1-sx-8E6"/>
+                                            </constraints>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="izl-Zi-Jzn">
                                                 <size key="itemSize" width="128" height="125"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -165,6 +168,7 @@
                                 </constraints>
                                 <connections>
                                     <outlet property="collectionView" destination="KiQ-jY-3H6" id="qSp-Wd-Bet"/>
+                                    <outlet property="collectionViewWidth" destination="yL1-sx-8E6" id="4pA-6z-zPl"/>
                                     <outlet property="headerButton" destination="ZK8-64-TCf" id="DoC-qk-FzZ"/>
                                 </connections>
                             </tableViewCell>

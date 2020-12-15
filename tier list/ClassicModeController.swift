@@ -105,7 +105,6 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
             try? jpegData.write(to: imagePath)
             let component = tierComponent(image: imageName)
             rowComponents.append(component)
-            print(rowComponents)
             tableView.reloadData()
 
         }
