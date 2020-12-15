@@ -22,8 +22,16 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        collectionView.delegate = self
+        collectionView.dataSource = self
+        
+        collectionView.backgroundColor = .black
+        
+        //sizes for button and collectionview
         headerButton.frame.size.width = self.frame.size.width / 8
-        collectionViewWidth.constant = (self.frame.size.width * (7/8))
+        collectionViewWidth.constant = (self.frame.size.width * (7/8) - 10 )
+        
+        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -42,8 +50,7 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
     
     
     func configure() {
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        
         
         collectionView.reloadData()
         
@@ -72,18 +79,17 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
         return cell
     }
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
-    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if components.count < 5 {
-            return CGSize(width: CGFloat((collectionViewWidth.constant / 4) - 10), height: height! - 20)
+            return CGSize(width: CGFloat((collectionViewWidth.constant / 4) - 10 ), height: height! - 10)
         }
         
-        return CGSize(width: CGFloat(CGFloat(collectionViewWidth.constant) / CGFloat(components.count) - 10  ), height: height! - 20)
+        return CGSize(width: CGFloat(CGFloat(collectionViewWidth.constant) / CGFloat(components.count)  ), height: height! - 20)
     }
-    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
+        return 5
+    }
     
 }
 

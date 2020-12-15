@@ -116,21 +116,21 @@
                                                 <action selector="buttonTapped:" destination="B7C-Ua-h0P" eventType="touchUpInside" id="NT2-QU-sbf"/>
                                             </connections>
                                         </button>
-                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KiQ-jY-3H6">
-                                            <rect key="frame" x="46" y="0.0" width="368" height="145"/>
+                                        <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KiQ-jY-3H6">
+                                            <rect key="frame" x="51" y="0.0" width="359" height="145"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="368" id="yL1-sx-8E6"/>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="368" id="yL1-sx-8E6"/>
                                             </constraints>
-                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="10" minimumInteritemSpacing="10" id="izl-Zi-Jzn">
+                                            <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="5" id="izl-Zi-Jzn">
                                                 <size key="itemSize" width="128" height="125"/>
                                                 <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                                 <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                                <inset key="sectionInset" minX="5" minY="5" maxX="5" maxY="5"/>
+                                                <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                             </collectionViewFlowLayout>
                                             <cells>
                                                 <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="tMT-be-ROl" customClass="ImageCell" customModule="tier_list" customModuleProvider="target">
-                                                    <rect key="frame" x="5" y="10" width="128" height="125"/>
+                                                    <rect key="frame" x="0.0" y="10" width="128" height="125"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="3Dc-zm-My0">
                                                         <rect key="frame" x="0.0" y="0.0" width="128" height="125"/>
@@ -155,9 +155,8 @@
                                         </collectionView>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="KiQ-jY-3H6" firstAttribute="leading" secondItem="ZK8-64-TCf" secondAttribute="trailing" id="0en-hw-tlK"/>
-                                        <constraint firstAttribute="trailing" secondItem="KiQ-jY-3H6" secondAttribute="trailing" id="7hk-kd-QlE"/>
                                         <constraint firstItem="KiQ-jY-3H6" firstAttribute="top" secondItem="EzT-2V-ayL" secondAttribute="top" id="IbB-mp-v6c"/>
+                                        <constraint firstItem="KiQ-jY-3H6" firstAttribute="leading" secondItem="ZK8-64-TCf" secondAttribute="trailing" constant="5" id="KTR-Wt-feU"/>
                                         <constraint firstAttribute="bottom" secondItem="KiQ-jY-3H6" secondAttribute="bottom" id="V3v-12-nKh"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -165,6 +164,7 @@
                                     <constraint firstItem="ZK8-64-TCf" firstAttribute="top" secondItem="B7C-Ua-h0P" secondAttribute="top" id="2Bk-3a-6Jf"/>
                                     <constraint firstAttribute="bottom" secondItem="ZK8-64-TCf" secondAttribute="bottom" id="2q5-bp-C4n"/>
                                     <constraint firstItem="ZK8-64-TCf" firstAttribute="leading" secondItem="B7C-Ua-h0P" secondAttribute="leading" id="ekk-Tb-nlv"/>
+                                    <constraint firstAttribute="trailing" secondItem="KiQ-jY-3H6" secondAttribute="trailing" constant="4" id="yew-Uv-pcj"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="collectionView" destination="KiQ-jY-3H6" id="qSp-Wd-Bet"/>

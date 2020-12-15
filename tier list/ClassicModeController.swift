@@ -12,7 +12,7 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
     
     var rowComponents = [tierComponent]()
     var components = [Int:[tierComponent]]()
-
+    var screenHeight:CGFloat = 0
     var rowHeight: CGFloat? = 0.0
     let rowName = ["S", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
     let rowNameBg = [
@@ -32,10 +32,16 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        tableView.backgroundColor = .black
         tableView.isScrollEnabled = false
-        let screenHeight = view.frame.size.height - (navigationController?.navigationBar.frame.size.height)! - 20
+        screenHeight = view.frame.size.height - (navigationController?.navigationBar.frame.size.height)! - 20
         rowHeight = screenHeight / CGFloat(rowCount)
         tableView.rowHeight = rowHeight ?? 0.0
+        print("passed")
+        //navigationbar items
+        let deleteRows = UIBarButtonItem(title: "Row -", style: .plain, target: self, action: #selector(deleteRow))
+        let addRows = UIBarButtonItem(title: "Row +", style: .plain, target: self, action: #selector(addRow))
+        navigationItem.rightBarButtonItems = [deleteRows,addRows]
         
     }
 
@@ -55,11 +61,11 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as? ClassicModeRow else { fatalError("Couldn't load cell") }
         
         let rowWidth = tableView.frame.size.width
+        cell.backgroundColor = .black
         cell.headerButton.setTitle(rowName[indexPath.row], for: .normal)
         cell.headerButton.setTitleColor(.black, for: .normal)
         cell.headerButton.backgroundColor = rowNameBg[indexPath.row]
         cell.headerButton.tag = indexPath.row
-
         
         cell.height = rowHeight!
         cell.width = rowWidth
@@ -91,7 +97,32 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         return cell
     }
     
+    @objc func addRow() {
+        if rowCount < 11 {
+            let indexPath = IndexPath(row: rowCount, section: 0)
+            rowCount += 1
+            rowHeight = screenHeight / CGFloat(rowCount)
+            tableView.rowHeight = rowHeight ?? 0.0
+            tableView.insertRows(at: [indexPath], with: .automatic)
+        } else {
+            return
+        }
+    }
     
+    @objc func deleteRow() {
+        
+        if rowCount > 0 {
+            rowCount -= 1
+            let indexPath = IndexPath(row: rowCount, section: 0)
+            
+            rowHeight = screenHeight / CGFloat(rowCount)
+            tableView.rowHeight = rowHeight ?? 0.0
+            tableView.deleteRows(at: [indexPath], with: .automatic)
+        } else {
+            return
+        }
+        
+    }
 
     
 //    picking image from galery
@@ -110,6 +141,11 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         }
 
         dismiss(animated: true)
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true)
+
     }
 
     func getDocumentsDirectory() -> URL {
