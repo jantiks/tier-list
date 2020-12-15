@@ -109,7 +109,7 @@
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZK8-64-TCf">
                                             <rect key="frame" x="0.0" y="0.0" width="46" height="145"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" constant="46" id="dU1-OU-bQv"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="dU1-OU-bQv"/>
                                             </constraints>
                                             <state key="normal" title="Button"/>
                                             <connections>

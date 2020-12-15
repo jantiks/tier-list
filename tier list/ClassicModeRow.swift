@@ -91,6 +91,17 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
         return 5
     }
     
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let ac = UIAlertController(title: "Delete image?", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Yes", style: .destructive) {
+            [weak self] _ in
+            self?.components.remove(at: indexPath.item)
+            collectionView.reloadData()
+        })
+        ac.addAction(UIAlertAction(title: "No", style: .default, handler: nil))
+        UIApplication.shared.keyWindow?.rootViewController?.present(ac, animated: true)
+    }
+    
 }
 
 extension ClassicModeRow: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
