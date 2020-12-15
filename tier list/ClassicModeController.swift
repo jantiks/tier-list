@@ -37,7 +37,7 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         screenHeight = view.frame.size.height - (navigationController?.navigationBar.frame.size.height)! - 20
         rowHeight = screenHeight / CGFloat(rowCount)
         tableView.rowHeight = rowHeight ?? 0.0
-        print("passed")
+
         //navigationbar items
         let deleteRows = UIBarButtonItem(title: "Row -", style: .plain, target: self, action: #selector(deleteRow))
         let addRows = UIBarButtonItem(title: "Row +", style: .plain, target: self, action: #selector(addRow))
@@ -66,6 +66,7 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         cell.headerButton.setTitleColor(.black, for: .normal)
         cell.headerButton.backgroundColor = rowNameBg[indexPath.row]
         cell.headerButton.tag = indexPath.row
+        print(tableView.frame.size.width)
         
         cell.height = rowHeight!
         cell.width = rowWidth

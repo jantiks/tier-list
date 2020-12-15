@@ -26,12 +26,8 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
         collectionView.dataSource = self
         
         collectionView.backgroundColor = .black
-        
+       
         //sizes for button and collectionview
-        headerButton.frame.size.width = self.frame.size.width / 8
-        collectionViewWidth.constant = (self.frame.size.width * (7/8) - 10 )
-        
-        
     }
 
     override func setSelected(_ selected: Bool, animated: Bool) {
@@ -50,9 +46,12 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
     
     
     func configure() {
-        
-        
         collectionView.reloadData()
+        
+        if let rowWidth = width {
+            headerButton.frame.size.width = (rowWidth / 8)
+            collectionViewWidth.constant = (rowWidth * (7/8) )
+        } else { return }
         
     }
     
@@ -69,10 +68,11 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? ImageCell else { fatalError("coudl not load collview cell") }
         
         
-            let image = components[indexPath.item]
-            let path = getDocumentsDirectory().appendingPathComponent(image.image)
-            cell.imageView.image = UIImage(contentsOfFile: path.path)
-        
+        let image = components[indexPath.item]
+        let path = getDocumentsDirectory().appendingPathComponent(image.image)
+        cell.imageView.image = UIImage(contentsOfFile: path.path)
+        cell.layer.borderColor = UIColor.black.cgColor
+        cell.layer.borderWidth = 3
         
         
         
@@ -82,14 +82,12 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if components.count < 5 {
-            return CGSize(width: CGFloat((collectionViewWidth.constant / 4) - 10 ), height: height! - 10)
+            return CGSize(width: CGFloat((collectionViewWidth.constant / 4)), height: height! - 10)
         }
         
-        return CGSize(width: CGFloat(CGFloat(collectionViewWidth.constant) / CGFloat(components.count)  ), height: height! - 20)
+        return CGSize(width: CGFloat(CGFloat(collectionViewWidth.constant) / CGFloat(components.count)), height: height!)
     }
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 5
-    }
+   
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let ac = UIAlertController(title: "Delete image?", message: nil, preferredStyle: .alert)

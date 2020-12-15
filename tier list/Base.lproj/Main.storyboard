@@ -94,7 +94,7 @@
         <scene sceneID="hR6-r0-ma5">
             <objects>
                 <tableViewController storyboardIdentifier="Classic" id="Lbf-RJ-Jio" customClass="ClassicModeController" customModule="tier_list" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1Dz-mA-yvD">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="1Dz-mA-yvD">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -117,10 +117,10 @@
                                             </connections>
                                         </button>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KiQ-jY-3H6">
-                                            <rect key="frame" x="51" y="0.0" width="359" height="145"/>
+                                            <rect key="frame" x="46" y="0.0" width="368" height="145"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                             <constraints>
-                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="368" id="yL1-sx-8E6"/>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="20" id="yL1-sx-8E6"/>
                                             </constraints>
                                             <collectionViewFlowLayout key="collectionViewLayout" scrollDirection="horizontal" minimumLineSpacing="0.0" minimumInteritemSpacing="5" id="izl-Zi-Jzn">
                                                 <size key="itemSize" width="128" height="125"/>
@@ -156,15 +156,15 @@
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="KiQ-jY-3H6" firstAttribute="top" secondItem="EzT-2V-ayL" secondAttribute="top" id="IbB-mp-v6c"/>
-                                        <constraint firstItem="KiQ-jY-3H6" firstAttribute="leading" secondItem="ZK8-64-TCf" secondAttribute="trailing" constant="5" id="KTR-Wt-feU"/>
                                         <constraint firstAttribute="bottom" secondItem="KiQ-jY-3H6" secondAttribute="bottom" id="V3v-12-nKh"/>
+                                        <constraint firstItem="KiQ-jY-3H6" firstAttribute="leading" secondItem="ZK8-64-TCf" secondAttribute="trailing" id="pUk-kl-0Oy"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
                                     <constraint firstItem="ZK8-64-TCf" firstAttribute="top" secondItem="B7C-Ua-h0P" secondAttribute="top" id="2Bk-3a-6Jf"/>
                                     <constraint firstAttribute="bottom" secondItem="ZK8-64-TCf" secondAttribute="bottom" id="2q5-bp-C4n"/>
                                     <constraint firstItem="ZK8-64-TCf" firstAttribute="leading" secondItem="B7C-Ua-h0P" secondAttribute="leading" id="ekk-Tb-nlv"/>
-                                    <constraint firstAttribute="trailing" secondItem="KiQ-jY-3H6" secondAttribute="trailing" constant="4" id="yew-Uv-pcj"/>
+                                    <constraint firstAttribute="trailing" secondItem="KiQ-jY-3H6" secondAttribute="trailing" id="yew-Uv-pcj"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="collectionView" destination="KiQ-jY-3H6" id="qSp-Wd-Bet"/>
