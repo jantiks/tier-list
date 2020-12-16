@@ -39,9 +39,10 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         tableView.rowHeight = rowHeight ?? 0.0
 
         //navigationbar items
+        let share = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareImage))
         let deleteRows = UIBarButtonItem(title: "Row -", style: .plain, target: self, action: #selector(deleteRow))
         let addRows = UIBarButtonItem(title: "Row +", style: .plain, target: self, action: #selector(addRow))
-        navigationItem.rightBarButtonItems = [deleteRows,addRows]
+        navigationItem.rightBarButtonItems = [share, deleteRows, addRows]
         
     }
 
@@ -66,7 +67,6 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         cell.headerButton.setTitleColor(.black, for: .normal)
         cell.headerButton.backgroundColor = rowNameBg[indexPath.row]
         cell.headerButton.tag = indexPath.row
-        print(tableView.frame.size.width)
         
         cell.height = rowHeight!
         cell.width = rowWidth
@@ -96,6 +96,22 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         }
     
         return cell
+    }
+    
+    @objc func shareImage() {
+        
+        //the link
+        let link = ""
+        //screenshot
+        let renderer = UIGraphicsImageRenderer(size: view.bounds.size)
+        let image = renderer.image { ctx in
+            view.drawHierarchy(in: view.bounds, afterScreenUpdates: true)
+            
+        }
+        
+        let shareController = UIActivityViewController(activityItems: [image, link], applicationActivities: nil)
+        shareController.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(shareController, animated: true)
     }
     
     @objc func addRow() {
