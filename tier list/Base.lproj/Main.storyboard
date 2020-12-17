@@ -80,6 +80,7 @@
                                     <constraints>
                                         <constraint firstItem="KiQ-jY-3H6" firstAttribute="top" secondItem="EzT-2V-ayL" secondAttribute="top" id="IbB-mp-v6c"/>
                                         <constraint firstAttribute="bottom" secondItem="KiQ-jY-3H6" secondAttribute="bottom" id="V3v-12-nKh"/>
+                                        <constraint firstItem="ZK8-64-TCf" firstAttribute="leading" secondItem="EzT-2V-ayL" secondAttribute="leadingMargin" constant="-20" id="cIp-me-nV1"/>
                                         <constraint firstItem="KiQ-jY-3H6" firstAttribute="leading" secondItem="ZK8-64-TCf" secondAttribute="trailing" id="pUk-kl-0Oy"/>
                                         <constraint firstItem="iMB-Vr-Peg" firstAttribute="leading" secondItem="ZK8-64-TCf" secondAttribute="trailing" constant="10" id="unM-XN-ghA"/>
                                     </constraints>
@@ -88,7 +89,7 @@
                                     <constraint firstItem="ZK8-64-TCf" firstAttribute="top" secondItem="B7C-Ua-h0P" secondAttribute="top" id="2Bk-3a-6Jf"/>
                                     <constraint firstAttribute="bottom" secondItem="ZK8-64-TCf" secondAttribute="bottom" id="2q5-bp-C4n"/>
                                     <constraint firstItem="iMB-Vr-Peg" firstAttribute="centerY" secondItem="B7C-Ua-h0P" secondAttribute="centerY" id="IYW-iW-Twn"/>
-                                    <constraint firstItem="ZK8-64-TCf" firstAttribute="leading" secondItem="B7C-Ua-h0P" secondAttribute="leading" id="ekk-Tb-nlv"/>
+                                    <constraint firstItem="ZK8-64-TCf" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="B7C-Ua-h0P" secondAttribute="leading" id="ekk-Tb-nlv"/>
                                     <constraint firstAttribute="trailing" secondItem="KiQ-jY-3H6" secondAttribute="trailing" id="yew-Uv-pcj"/>
                                 </constraints>
                                 <connections>

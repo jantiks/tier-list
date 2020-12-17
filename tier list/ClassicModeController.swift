@@ -12,7 +12,7 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
     
     var rowComponents = [tierComponent]()
     var components = [Int:[tierComponent]]()
-    var screenHeight:CGFloat = 0
+    var screenHeight: CGFloat = 0
     var rowHeight: CGFloat = 0
     let rowName = ["S", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
     let rowNameBg = [
@@ -29,16 +29,19 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         UIColor(red: 0.5, green: 0, blue: 1, alpha: 1) ]
     var rowCount = 6
     var newListTapped = false
+    var rotated = false
     
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        
         tableView.backgroundColor = .black
         tableView.isScrollEnabled = false
-        screenHeight = view.frame.size.height - (navigationController?.navigationBar.frame.size.height)! - 20
-        rowHeight = screenHeight / CGFloat(rowCount)
-        tableView.rowHeight = rowHeight
+        setRowHeight()
 
+//
 //        navigationbar items
         let newList = UIBarButtonItem(title: "New List", style: .plain, target: self, action: #selector(refreshList))
         let share = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareImage))
@@ -47,6 +50,17 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         navigationItem.rightBarButtonItems = [share, deleteRows, addRows]
         navigationItem.leftBarButtonItem = newList
         
+    }
+    
+    
+    func setRowHeight() {
+
+        
+        
+        screenHeight = view.frame.size.height - (navigationController?.navigationBar.frame.size.height)! - 20
+        rowHeight = screenHeight / CGFloat(rowCount)
+        tableView.rowHeight = rowHeight
+        print(screenHeight, rowHeight, view.frame.size.height)
     }
 
     // MARK: - Table view data source
@@ -118,11 +132,6 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         }
         
         
-        
-    
-        
-        
-    
         return cell
     }
     
@@ -205,8 +214,26 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
     }
+    
+    override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
 
-    
-    
+        super.willTransition(to: newCollection, with: coordinator)
+
+        coordinator.animate(alongsideTransition: { [unowned self] _ in
+            if newCollection.verticalSizeClass == .compact {
+                self.screenHeight = self.view.frame.size.height - (self.navigationController?.navigationBar.frame.size.height)! + 20
+                self.rowHeight = self.screenHeight / CGFloat(self.rowCount)
+                self.tableView.rowHeight = self.rowHeight
+                print(self.view.frame.size.height)
+            } else {
+                self.setRowHeight()
+                
+            }
+        }) { [unowned self] _ in
+            self.tableView.reloadData()
+        }
+
+    }
+
 
 }
