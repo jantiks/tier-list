@@ -13,7 +13,7 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
     var rowComponents = [tierComponent]()
     var components = [Int:[tierComponent]]()
     var screenHeight:CGFloat = 0
-    var rowHeight: CGFloat? = 0.0
+    var rowHeight: CGFloat = 0
     let rowName = ["S", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
     let rowNameBg = [
         UIColor(red: 1, green: 0, blue: 0, alpha: 1),
@@ -37,7 +37,7 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         tableView.isScrollEnabled = false
         screenHeight = view.frame.size.height - (navigationController?.navigationBar.frame.size.height)! - 20
         rowHeight = screenHeight / CGFloat(rowCount)
-        tableView.rowHeight = rowHeight ?? 0.0
+        tableView.rowHeight = rowHeight
 
 //        navigationbar items
         let newList = UIBarButtonItem(title: "New List", style: .plain, target: self, action: #selector(refreshList))
@@ -71,9 +71,11 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         cell.headerButton.backgroundColor = rowNameBg[indexPath.row]
         cell.headerButton.tag = indexPath.row
         
-        cell.height = rowHeight!
+        
+        cell.height = rowHeight
         cell.width = rowWidth
         
+
         //clousre which calls uiImagePickerController from tableView
         cell.buttonTouchedClosure = {
             [weak self] in
@@ -107,6 +109,12 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
                 newListTapped = false
 
             }
+        }
+        
+        if indexPath.row == 0 && rowComponents.isEmpty {
+            cell.clickLabel.text = "<- click to start"
+        } else {
+            cell.clickLabel.isHidden = true
         }
         
         
@@ -147,7 +155,7 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
             let indexPath = IndexPath(row: rowCount, section: 0)
             rowCount += 1
             rowHeight = screenHeight / CGFloat(rowCount)
-            tableView.rowHeight = rowHeight ?? 0.0
+            tableView.rowHeight = rowHeight 
             tableView.insertRows(at: [indexPath], with: .automatic)
         } else {
             return
@@ -161,7 +169,7 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
             let indexPath = IndexPath(row: rowCount, section: 0)
             
             rowHeight = screenHeight / CGFloat(rowCount)
-            tableView.rowHeight = rowHeight ?? 0.0
+            tableView.rowHeight = rowHeight 
             tableView.deleteRows(at: [indexPath], with: .automatic)
         } else {
             return
@@ -198,6 +206,7 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         return paths[0]
     }
 
+    
     
 
 }

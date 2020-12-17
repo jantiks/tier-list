@@ -10,6 +10,7 @@ import UIKit
 
 class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
+    @IBOutlet var clickLabel: UILabel!
     @IBOutlet var headerButton: UIButton!
     @IBOutlet var collectionView: UICollectionView!
     @IBOutlet var collectionViewWidth: NSLayoutConstraint!
@@ -81,8 +82,8 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if components.count < 5 {
-            return CGSize(width: CGFloat((collectionViewWidth.constant / 4)), height: height! - 10)
+        if components.count < 3 {
+            return CGSize(width: height!, height: height!)
         }
         
         return CGSize(width: CGFloat(CGFloat(collectionViewWidth.constant) / CGFloat(components.count)), height: height!)

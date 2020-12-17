@@ -23,16 +23,6 @@
                                     <rect key="frame" x="0.0" y="0.0" width="414" height="145"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZK8-64-TCf">
-                                            <rect key="frame" x="0.0" y="0.0" width="46" height="145"/>
-                                            <constraints>
-                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="dU1-OU-bQv"/>
-                                            </constraints>
-                                            <state key="normal" title="Button"/>
-                                            <connections>
-                                                <action selector="buttonTapped:" destination="B7C-Ua-h0P" eventType="touchUpInside" id="NT2-QU-sbf"/>
-                                            </connections>
-                                        </button>
                                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" contentInsetAdjustmentBehavior="never" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="KiQ-jY-3H6">
                                             <rect key="frame" x="46" y="0.0" width="368" height="145"/>
                                             <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
@@ -70,20 +60,39 @@
                                                 </collectionViewCell>
                                             </cells>
                                         </collectionView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iMB-Vr-Peg">
+                                            <rect key="frame" x="56" y="62" width="42" height="21"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZK8-64-TCf">
+                                            <rect key="frame" x="0.0" y="0.0" width="46" height="145"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="46" id="dU1-OU-bQv"/>
+                                            </constraints>
+                                            <state key="normal" title="Button"/>
+                                            <connections>
+                                                <action selector="buttonTapped:" destination="B7C-Ua-h0P" eventType="touchUpInside" id="NT2-QU-sbf"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <constraints>
                                         <constraint firstItem="KiQ-jY-3H6" firstAttribute="top" secondItem="EzT-2V-ayL" secondAttribute="top" id="IbB-mp-v6c"/>
                                         <constraint firstAttribute="bottom" secondItem="KiQ-jY-3H6" secondAttribute="bottom" id="V3v-12-nKh"/>
                                         <constraint firstItem="KiQ-jY-3H6" firstAttribute="leading" secondItem="ZK8-64-TCf" secondAttribute="trailing" id="pUk-kl-0Oy"/>
+                                        <constraint firstItem="iMB-Vr-Peg" firstAttribute="leading" secondItem="ZK8-64-TCf" secondAttribute="trailing" constant="10" id="unM-XN-ghA"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <constraints>
                                     <constraint firstItem="ZK8-64-TCf" firstAttribute="top" secondItem="B7C-Ua-h0P" secondAttribute="top" id="2Bk-3a-6Jf"/>
                                     <constraint firstAttribute="bottom" secondItem="ZK8-64-TCf" secondAttribute="bottom" id="2q5-bp-C4n"/>
+                                    <constraint firstItem="iMB-Vr-Peg" firstAttribute="centerY" secondItem="B7C-Ua-h0P" secondAttribute="centerY" id="IYW-iW-Twn"/>
                                     <constraint firstItem="ZK8-64-TCf" firstAttribute="leading" secondItem="B7C-Ua-h0P" secondAttribute="leading" id="ekk-Tb-nlv"/>
                                     <constraint firstAttribute="trailing" secondItem="KiQ-jY-3H6" secondAttribute="trailing" id="yew-Uv-pcj"/>
                                 </constraints>
                                 <connections>
+                                    <outlet property="clickLabel" destination="iMB-Vr-Peg" id="gg6-Al-SUp"/>
                                     <outlet property="collectionView" destination="KiQ-jY-3H6" id="qSp-Wd-Bet"/>
                                     <outlet property="collectionViewWidth" destination="yL1-sx-8E6" id="4pA-6z-zPl"/>
                                     <outlet property="headerButton" destination="ZK8-64-TCf" id="DoC-qk-FzZ"/>
