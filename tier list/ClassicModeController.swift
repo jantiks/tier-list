@@ -28,6 +28,7 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         UIColor(red: 0.5, green: 0.4, blue: 1, alpha: 1),
         UIColor(red: 0.5, green: 0, blue: 1, alpha: 1) ]
     var rowCount = 6
+    var newListTapped = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -38,11 +39,13 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         rowHeight = screenHeight / CGFloat(rowCount)
         tableView.rowHeight = rowHeight ?? 0.0
 
-        //navigationbar items
+//        navigationbar items
+        let newList = UIBarButtonItem(title: "New List", style: .plain, target: self, action: #selector(refreshList))
         let share = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareImage))
         let deleteRows = UIBarButtonItem(title: "Row -", style: .plain, target: self, action: #selector(deleteRow))
         let addRows = UIBarButtonItem(title: "Row +", style: .plain, target: self, action: #selector(addRow))
         navigationItem.rightBarButtonItems = [share, deleteRows, addRows]
+        navigationItem.leftBarButtonItem = newList
         
     }
 
@@ -79,6 +82,8 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
             self?.present(picker, animated: true)
         }
         
+        
+       
         if cell.rowTag == indexPath.row {
             if let tag = cell.rowTag {
                 
@@ -90,12 +95,35 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
                 cell.components.append((components[tag]?.last)!)
                 cell.configure()
                 cell.rowTag = nil
-
+                
             }
             
         }
+        
+        if newListTapped {
+            cell.components.removeAll()
+            cell.configure()
+            if indexPath.row == rowCount - 1 {
+                newListTapped = false
+
+            }
+        }
+        
+        
+        
+    
+        
+        
     
         return cell
+    }
+    
+    @objc func refreshList() {
+        newListTapped = true
+        components.removeAll()
+        rowComponents.removeAll()
+        tableView.reloadData()
+//        newListTapped = false
     }
     
     @objc func shareImage() {
