@@ -60,8 +60,8 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
     
     func setRowHeight(height: CGFloat) {
 
-        
-        screenHeight = height - (navigationController?.navigationBar.bounds.size.height)! - 20
+//        let statusBarHeight = view.window?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0
+        screenHeight = height - (navigationController?.navigationBar.bounds.size.height)! - UIApplication.shared.statusBarFrame.height
         rowHeight = screenHeight / CGFloat(rowCount)
         tableView.rowHeight = rowHeight
         print(screenHeight, rowHeight, height)
