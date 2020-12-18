@@ -82,7 +82,7 @@ class ClassicModeRow: UITableViewCell, UICollectionViewDelegate, UICollectionVie
     
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        if components.count < 3 {
+        if height! * CGFloat(components.count) < collectionViewWidth.constant {
             return CGSize(width: height!, height: height!)
         }
         

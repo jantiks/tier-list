@@ -81,15 +81,14 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as? ClassicModeRow else { fatalError("Couldn't load cell") }
-        
+        cell.configure()
         let rowWidth = tableView.frame.size.width
         cell.backgroundColor = .black
         cell.headerButton.setTitle(rowName[indexPath.row], for: .normal)
         cell.headerButton.setTitleColor(.black, for: .normal)
         cell.headerButton.backgroundColor = rowNameBg[indexPath.row]
         cell.headerButton.tag = indexPath.row
-        
-        
+
         cell.height = rowHeight
         cell.width = rowWidth
         
@@ -106,22 +105,24 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
        
         if cell.rowTag == indexPath.row {
             if let tag = cell.rowTag {
-                
-                if components.keys.contains(tag) {
-                    components[tag]?.append(rowComponents.last!)
-                } else {
-                    components[tag] = [rowComponents.last!]
+                if !rowComponents.isEmpty {
+                    if components.keys.contains(tag) {
+                        components[tag]?.append(rowComponents.last!)
+                    } else {
+                        components[tag] = [rowComponents.last!]
+                    }
+                    cell.components.append((components[tag]?.last)!)
+                    cell.configure()
+                    cell.rowTag = nil
                 }
-                cell.components.append((components[tag]?.last)!)
-                cell.configure()
-                cell.rowTag = nil
+                
                 
             }
             
         }
         
         if newListTapped {
-            cell.components.removeAll()
+            cell.components.removeAll(keepingCapacity: true)
             cell.configure()
             if indexPath.row == rowCount - 1 {
                 newListTapped = false
@@ -141,8 +142,8 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
     
     @objc func refreshList() {
         newListTapped = true
-        components.removeAll()
-        rowComponents.removeAll()
+        components.removeAll(keepingCapacity: true)
+        rowComponents.removeAll(keepingCapacity: true)
         tableView.reloadData()
 //        newListTapped = false
     }
@@ -165,11 +166,12 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
     
     @objc func addRow() {
         if rowCount < 11 {
-            let indexPath = IndexPath(row: rowCount, section: 0)
+//            let indexPath = IndexPath(row: rowCount, section: 0)
             rowCount += 1
             rowHeight = screenHeight / CGFloat(rowCount)
-            tableView.rowHeight = rowHeight 
-            tableView.insertRows(at: [indexPath], with: .automatic)
+            tableView.rowHeight = rowHeight
+            tableView.reloadData()
+//            tableView.insertRows(at: [indexPath], with: .automatic)
         } else {
             return
         }
@@ -179,11 +181,12 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         
         if rowCount > 0 {
             rowCount -= 1
-            let indexPath = IndexPath(row: rowCount, section: 0)
+//            let indexPath = IndexPath(row: rowCount, section: 0)
             
             rowHeight = screenHeight / CGFloat(rowCount)
-            tableView.rowHeight = rowHeight 
-            tableView.deleteRows(at: [indexPath], with: .automatic)
+            tableView.rowHeight = rowHeight
+            tableView.reloadData()
+//            tableView.deleteRows(at: [indexPath], with: .automatic)
         } else {
             return
         }
@@ -193,18 +196,30 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
     
 //    picking image from galery
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
-        guard let image = info[.originalImage] as? UIImage else { return }
-
-        let imageName = UUID().uuidString
-        let imagePath = getDocumentsDirectory().appendingPathComponent(imageName)
-
-        if let jpegData = image.jpegData(compressionQuality: 0.8) {
-            try? jpegData.write(to: imagePath)
-            let component = tierComponent(image: imageName)
-            rowComponents.append(component)
-            tableView.reloadData()
-
+        DispatchQueue.global(qos: .userInteractive).async { [weak self] in
+            guard let image = info[.originalImage] as? UIImage else { return }
+            
+            let imageName = UUID().uuidString
+            let imagePath = self?.getDocumentsDirectory().appendingPathComponent(imageName)
+            
+            if let jpegData = image.jpegData(compressionQuality: 0.8) {
+                if let imagePath = imagePath {
+                    try? jpegData.write(to: imagePath)
+                    let component = tierComponent(image: imageName)
+                    self?.rowComponents.append(component)
+                    DispatchQueue.main.async {
+                        self?.tableView.reloadData()
+                        
+                    }
+                }
+                
+                
+            }
+            
+            
         }
+    
+    
 
         dismiss(animated: true)
     }
