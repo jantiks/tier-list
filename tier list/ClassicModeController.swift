@@ -14,6 +14,8 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
     var components = [Int:[tierComponent]]()
     var screenHeight: CGFloat = 0
     var rowHeight: CGFloat = 0
+    var viewHeight: CGFloat = 0
+    var viewWidth: CGFloat = 0
     let rowName = ["S", "A", "B", "C", "D", "E", "F", "G", "H", "I", "J"]
     let rowNameBg = [
         UIColor(red: 1, green: 0, blue: 0, alpha: 1),
@@ -35,11 +37,14 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        viewHeight = view.frame.size.height
+        viewWidth = view.frame.size.width
+        
         
         
         tableView.backgroundColor = .black
         tableView.isScrollEnabled = false
-        setRowHeight()
+        setRowHeight(height: viewHeight)
 
 //
 //        navigationbar items
@@ -53,14 +58,13 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
     }
     
     
-    func setRowHeight() {
+    func setRowHeight(height: CGFloat) {
 
         
-        
-        screenHeight = view.frame.size.height - (navigationController?.navigationBar.frame.size.height)! - 20
+        screenHeight = height - (navigationController?.navigationBar.bounds.size.height)! - 20
         rowHeight = screenHeight / CGFloat(rowCount)
         tableView.rowHeight = rowHeight
-        print(screenHeight, rowHeight, view.frame.size.height)
+        print(screenHeight, rowHeight, height)
     }
 
     // MARK: - Table view data source
@@ -221,12 +225,20 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
 
         coordinator.animate(alongsideTransition: { [unowned self] _ in
             if newCollection.verticalSizeClass == .compact {
-                self.screenHeight = self.view.frame.size.height - (self.navigationController?.navigationBar.frame.size.height)! + 20
-                self.rowHeight = self.screenHeight / CGFloat(self.rowCount)
-                self.tableView.rowHeight = self.rowHeight
-                print(self.view.frame.size.height)
+                if self.viewWidth > self.viewHeight {
+                    let mix = self.viewWidth
+                    self.viewWidth = self.viewHeight
+                    self.viewHeight = mix
+                }
+                self.setRowHeight(height: self.viewWidth)
+
             } else {
-                self.setRowHeight()
+                if self.viewWidth > self.viewHeight {
+                    let mix = self.viewWidth
+                    self.viewWidth = self.viewHeight
+                    self.viewHeight = mix
+                }
+                self.setRowHeight(height: self.viewHeight)
                 
             }
         }) { [unowned self] _ in
