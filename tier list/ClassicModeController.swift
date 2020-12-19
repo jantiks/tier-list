@@ -81,7 +81,7 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "row", for: indexPath) as? ClassicModeRow else { fatalError("Couldn't load cell") }
-        cell.configure()
+        
         let rowWidth = tableView.frame.size.width
         cell.backgroundColor = .black
         cell.headerButton.setTitle(rowName[indexPath.row], for: .normal)
@@ -92,6 +92,7 @@ class ClassicModeController: UITableViewController, UIImagePickerControllerDeleg
         cell.height = rowHeight
         cell.width = rowWidth
         
+        cell.configure()
 
         //clousre which calls uiImagePickerController from tableView
         cell.buttonTouchedClosure = {
